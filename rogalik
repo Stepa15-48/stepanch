@@ -1,0 +1,79 @@
+namespace rogalic
+{
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Добро пожаловать, воин!");
+            Console.Write("Назови себя: ");
+            string playerName = Console.ReadLine();
+            Console.WriteLine($"Ваше имя {playerName}");
+            int HP = 100;
+            int DAMAGE = 20;
+            int HEAL = 10;
+            string enemyPlayer = "бдшник";
+            int enemyHP = 100;
+            int enemyDAMAGE = 20;
+            Console.WriteLine($"Вам был ниспослан меч Фламберг ({DAMAGE}), а также средняя аптечка ({HEAL})");
+            Console.WriteLine($"У вас {HP}hp");
+            Console.WriteLine($"{playerName} встречает врага {enemyPlayer} ({enemyHP}hp), у врага на поясе сияет оружие **Экскалибур (10).");
+            while (HP > 0 && enemyHP > 0)
+            {
+                Console.WriteLine("Что вы будете делать?");
+                Console.WriteLine("1. Ударить");
+                Console.WriteLine("2. Пропустить ход");
+                Console.WriteLine("3. Использовать аптечку");
+                Console.Write("> ");
+
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                
+                        enemyHP -= DAMAGE;
+                        Console.WriteLine($"{playerName} ударил противника {enemyPlayer}");
+                        Console.WriteLine($"У противника {enemyHP}hp, у вас {HP}hp");
+
+                     
+                        if (enemyHP > 0)
+                        {
+                            HP -= enemyDAMAGE;
+                            Console.WriteLine($"У противника {enemyHP}hp, у вас {HP}hp");
+                        }
+                        break;
+
+                    case "2":
+                        Console.WriteLine($"{playerName} пропустил ход.");
+                        break;
+
+                    case "3":
+                      
+                        HP += HEAL;
+                        Console.WriteLine($"{playerName} использовал аптечку.");
+                        Console.WriteLine($"У противника {enemyHP}hp, у вас {HP}hp");
+                        break;
+
+                    default:
+                        Console.WriteLine("Неверный выбор, попробуйте снова.");
+                        break;
+                }
+
+             
+                if (HP <= 0)
+                {
+                    Console.WriteLine($"{playerName} был повержен!");
+                    break;
+                }
+                else if (enemyHP <= 0)
+                {
+                    Console.WriteLine($"{enemyPlayer} был побежден! Поздравляем, {playerName}!");
+                }
+            }
+
+           
+            Console.WriteLine("ВЫ ПОБЕДИЛА БОССА");
+        }
+    }
+}
