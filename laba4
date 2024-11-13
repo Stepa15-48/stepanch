@@ -1,0 +1,143 @@
+
+// 1задание 
+
+/*using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Введите число A (должно быть меньше B): ");
+        int A = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Введите число B: ");
+        int B = Convert.ToInt32(Console.ReadLine());
+
+        if (A >= B)
+        {
+            Console.WriteLine("Ошибка: A должно быть меньше B.");
+            return;
+        }
+
+        int suma = 0;
+        for (int i = A + 1; i < B; i++)
+        {
+            suma += i;
+        }
+        Console.WriteLine($"Сумма всех чисел между {A} и {B} равна: {suma}");
+
+        Console.WriteLine($"Нечетные числа между {A} и {B}:");
+        for (int i = A + 1; i < B; i++)
+        {
+            if (i % 2 != 0)
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}
+
+*/
+
+
+// 2 задание 
+
+/*using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Перебираем числа от 10 до 20 включительно
+        for (int i = 10; i <= 20; i++)
+        {
+            // Вычисляем квадрат числа
+            int square = i * i;
+
+            // Выводим результат на экран
+            Console.WriteLine($"Квадрат числа {i} равен {square}");
+        }
+
+        // Ждем нажатия клавиши перед завершением программы
+        Console.ReadKey();
+    }
+}
+*/
+// 3 задание 
+/*using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Введите число n: ");
+
+        int n;
+        if (int.TryParse(Console.ReadLine(), out n))
+        {
+            if (n >= 1)
+            {
+                int sum = 0;
+
+                for (int i = 1; i <= n; i++)
+                {
+                    sum += i;
+
+                }
+                Console.WriteLine($"Сумма чисел от 1 до {n} равна {sum}.");
+            }
+            else
+            {
+                // это если мы напишем отрицательное число или 0 
+                Console.WriteLine("Пожалуйста, введите число больше или равное 1.");
+            }
+        }
+        else
+        {
+            // Если мы напишшем  число не int
+            Console.WriteLine("Ошибка: Введите корректное целое число.");
+        }
+    }
+}
+*/
+
+// 4  задание 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+      
+        Console.Write("Введите заработную плату сотрудника: ");
+        double salary = Convert.ToDouble(Console.ReadLine());
+
+
+        Console.Write("Введите выслугу лет сотрудника: ");
+        int yearsOfService = Convert.ToInt32(Console.ReadLine());
+
+   
+        double bonus = CalculateBonus(salary, yearsOfService);
+
+       
+        Console.WriteLine($"Премия: {bonus:C2}");
+    }
+
+    static double CalculateBonus(double salary, int years)
+    {
+        double percentage;
+
+        
+        if (years < 5)
+            percentage = 0.10; 
+        else if (years < 10)
+            percentage = 0.15; 
+        else if (years < 15)
+            percentage = 0.25; 
+        else
+            percentage = 0.35; 
+
+       
+        return salary * percentage;
+    }
+}
